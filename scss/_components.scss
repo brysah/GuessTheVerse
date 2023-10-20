@@ -1,9 +1,10 @@
 .option {
-    width: 31.1rem;
-    height: 6rem; 
+    max-width: 31.1rem;
+    width: 100%;
+    height: 6rem;
     border-radius: 4px;
     text-align: center;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
 
     &.a {
@@ -11,35 +12,62 @@
         background: $color-bg-btn-opt1;
         color: $color-txt-btn-opt1;
         transition: background .3s;
-        &:hover{
+
+        &:hover {
             background: $color-bg-btn-opt1-hover;
         }
     }
+
     &.b {
         border: 4px solid $color-border-btn-opt2;
         background: $color-bg-btn-opt2;
         color: $color-txt-btn-opt2;
         transition: background .3s;
-        &:hover{
+
+        &:hover {
             background: $color-bg-btn-opt2-hover;
         }
     }
+
     &.c {
         border: 4px solid $color-border-btn-opt3;
         background: $color-bg-btn-opt3;
         color: $color-txt-btn-opt3;
         transition: background .3s;
-        &:hover{
+
+        &:hover {
             background: $color-bg-btn-opt3-hover;
         }
     }
+
     &.d {
         border: 4px solid $color-border-btn-opt4;
         background: $color-bg-btn-opt4;
         color: $color-txt-btn-opt4;
         transition: background .3s;
-        &:hover{
+
+        &:hover {
             background: $color-bg-btn-opt4-hover;
         }
+    }
+}
+
+.btn-play { 
+    max-width: 13.5rem;
+    width: 100%;
+    height: 4.8rem;
+    padding: 1rem; 
+    border: 2px solid #000;
+    background: $color-bg-btn-play;
+    box-shadow: 2px 2px 0px 0px #000;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    transition: background .3s;
+
+    &:hover {
+        background: $color-bg-btn-play-hover;
     }
 }

@@ -1,0 +1,44 @@
+.s-welcome {
+    background-color: white;
+    max-width: 67.1rem;
+    width: 100%;
+    height: 41.5rem;
+    border: 4px solid black;
+    box-shadow: 12px 12px 4px 0px #000;
+    margin: 0 auto;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .title {
+            h1 {
+                color: black;
+                text-align: center;
+                font-feature-settings: 'ss03' on, 'ss01' on;
+                text-shadow: none;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 6.4rem;
+                font-weight: 700;
+
+                &.yellow {
+                    color: $color-txt-h1;
+                    text-shadow: 2px 2px 0px #000;
+                }
+            }
+
+            margin-bottom: 4rem;
+        }
+
+        .description {
+            color: black;
+            text-align: center;
+            font-variant-numeric: stacked-fractions slashed-zero;
+            font-family: 'Inter',sans-serif;
+            font-size: 1.8rem; 
+            font-weight: 400; 
+            margin-bottom: 4rem;
+        }
+    }
+}

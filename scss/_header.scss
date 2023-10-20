@@ -1,0 +1,32 @@
+body {
+    background-color: $color-bg;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+header {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            cursor: pointer;
+            transition: transform .3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        .how-to {
+            cursor: pointer;
+            transition: transform .3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+ 
+    }
+}
+ 

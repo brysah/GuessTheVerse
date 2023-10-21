@@ -43,6 +43,7 @@
         }
     }
 }
+
 .s-setting {
     background-color: white;
     max-width: 67.1rem;
@@ -57,34 +58,26 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        padding: 2rem;
 
         .title {
-            h1 {
-                color: black;
-                text-align: center;
-                font-feature-settings: 'ss03' on, 'ss01' on;
-                text-shadow: none;
-                font-family: 'IBM Plex Mono', monospace;
-                font-size: 6.4rem;
-                font-weight: 700;
-
-                &.yellow {
-                    color: $color-txt-h1;
-                    text-shadow: 2px 2px 0px #000;
-                }
-            }
-
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
         }
 
-        .description {
-            color: black;
-            text-align: center;
-            font-variant-numeric: stacked-fractions slashed-zero;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 4rem;
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 4rem;
+            .search-label { 
+                input[type="search"] {
+                    border: 2px solid #000;
+                    box-shadow: 2px 2px 0px 0px #000;
+                    border-radius: 15px;
+                    padding: 2rem;  
+                    width: 32rem;
+                } 
+            }
         }
     }
 }
@@ -145,18 +138,19 @@
             }
         }
 
-        .icon-close{
+        .icon-close {
             position: absolute;
             top: 2rem;
-            right: 2rem; 
+            right: 2rem;
         }
     }
 }
 
-.modal-opened{
+.modal-opened {
     overflow: hidden;
-    .modal-why-play{
+
+    .modal-why-play {
         opacity: 1;
-        pointer-events: all; 
+        pointer-events: all;
     }
 }

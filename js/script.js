@@ -21,8 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   btnHow.addEventListener('click', openModal);
   overlay.addEventListener('click', openModal);
-  close.addEventListener('click',(e)=>{
+  close.addEventListener('click', (e) => {
     e.preventDefault();
     openModal();
   });
+
+  const playButton = document.querySelector('.btn-play');
+  const bodyPage = document.querySelector('main');
+  
+  playButton.addEventListener('click', function () {
+    fetch('../game-setting.html')
+      .then(response => response.text())
+      .then(data => {
+        bodyPage.innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+  });
+
 });

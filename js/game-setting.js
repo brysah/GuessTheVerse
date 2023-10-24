@@ -74,3 +74,18 @@ submitButton.addEventListener('click', (e) => {
         error.innerHTML = "Invalid artist";
     }
 });
+
+const btnHow = document.querySelector('.how-to');
+const close = document.querySelector('.icon-close');
+const overlay = document.querySelector('.overlay');
+
+function openModal() {
+  document.documentElement.classList.toggle('modal-opened');
+}
+
+btnHow.addEventListener('click', openModal);
+overlay.addEventListener('click', openModal);
+close.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal();
+});

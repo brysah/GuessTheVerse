@@ -7,6 +7,21 @@ const image = document.querySelector('.artist-img');
 const options = document.querySelectorAll('.option');
 image.setAttribute('src', imageUrl);
 
+const btnHow = document.querySelector('.how-to');
+const close = document.querySelector('.icon-close');
+const overlay = document.querySelector('.overlay');
+
+function openModal() {
+  document.documentElement.classList.toggle('modal-opened');
+}
+
+btnHow.addEventListener('click', openModal);
+overlay.addEventListener('click', openModal);
+close.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal();
+});
+
 options.forEach(item => {
     item.addEventListener('click', (e) => {
         options.forEach(option => {

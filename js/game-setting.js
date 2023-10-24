@@ -69,7 +69,7 @@ submitButton.addEventListener('click', (e) => {
         const id = selectedOption.getAttribute('data-value');
         const dataToSend = { imageUrl: id};
         const queryString = `?imageUrl=${dataToSend.imageUrl}`;
-        window.location.href = `../game.html${queryString}`;
+        window.location.href = `game.html${queryString}`;
     } else {
         error.innerHTML = "Invalid artist";
     }

@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const playButton = document.querySelector('.btn-play');
 
   playButton.addEventListener('click', function () {
-    window.location.href = '../game-setting.html';
+    window.location.href = 'game-setting.html';
+
   })
 
 

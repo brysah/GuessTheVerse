@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const lyrics = document.querySelector('.lyrics');
                 const album = document.querySelector('.album');
                 const image = document.querySelector('.artist-img');
-                
+
                 const options = document.querySelectorAll('.option');
-                
+
                 options.forEach(item => {
                   item.addEventListener('click', (e) => {
                     options.forEach(option => {
@@ -137,6 +137,17 @@ document.addEventListener('DOMContentLoaded', function () {
                   .then(response => response.json())
                   .then(data => {
                     image.setAttribute('src', data.images[0].url);
+                    const artistName = 'justin bieber';
+                    const apiKey = '8d7ad2534c36083b8838852b8facb582.'; // Replace with your Musixmatch API key
+                    const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&apikey=${apiKey}`;
+
+                    fetch(apiUrl)
+                      .then(response => response.json())
+                      .then(data => {
+                        console.log(data);
+                      })
+                      .catch(error => console.error('Error:', error));
+
                   })
                   .catch(error => console.error('Erro:', error));
               })

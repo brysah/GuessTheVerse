@@ -50,6 +50,21 @@
             background: $color-bg-btn-opt4-hover;
         }
     }
+
+    &.selected{
+        background: $color-bg-selected;
+        position: relative;
+        &:after{
+            content: "";
+            background-image: url(../img/icon-check.svg);
+            background-size: cover;
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            top: 1rem;
+            right: 1rem;
+        }
+    }
 }
 
 .btn-play,

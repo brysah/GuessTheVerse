@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const error = document.querySelector(".error");
 
           if (selectedOption) {
-            error.innerHTML = "";  
-            error.className = "error";  
+            error.innerHTML = "";
+            error.className = "error";
             const id = selectedOption.getAttribute('data-value');
             fetch('../game.html')
               .then(response => response.text())
@@ -113,6 +113,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 const lyrics = document.querySelector('.lyrics');
                 const album = document.querySelector('.album');
                 const image = document.querySelector('.artist-img');
+                
+                const options = document.querySelectorAll('.option');
+                
+                options.forEach(item => {
+                  item.addEventListener('click', (e) => {
+                    options.forEach(option => {
+                      if (option !== e.target) {
+                        option.classList.remove('selected');
+                      }
+                    });
+                    e.target.classList.toggle('selected');
+                  });
+                });
                 // image.setAttribute('src',response.getAttribute('data-value'));
                 let apiUrl = `https://api.spotify.com/v1/artists/${id}/`;
 
@@ -123,8 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                   .then(response => response.json())
                   .then(data => {
-                    console.log(data);
-                    image.setAttribute('src',data.images[0].url);
+                    image.setAttribute('src', data.images[0].url);
                   })
                   .catch(error => console.error('Erro:', error));
               })

@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const imageUrl = urlParams.get('imageUrl');
+const artistName = urlParams.get('nameArtist');
 const lyrics = document.querySelector('.lyrics');
 const album = document.querySelector('.album');
 const image = document.querySelector('.artist-img');
@@ -24,7 +25,6 @@ function randomNumber(max) {
 
 
 const apiKey = '8d7ad2534c36083b8838852b8facb582';
-const artistName = 'justin bieber';
 const apiUrl = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&f_has_lyrics=true&s_track_rating=desc&page_size=1&page=1&apikey=${apiKey}`;
 
 

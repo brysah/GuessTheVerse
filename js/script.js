@@ -82,17 +82,62 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
               dataCleaner(artistList);
               data.artists.items.forEach(element => {
-                let option = document.createElement('option');
-                option.value = element.name;
-                artistList.appendChild(option);
-                console.log(element);
+                if (element.popularity > 0) {
+                  let option = document.createElement('option');
+                  option.textContent = element.name;
+                  option.setAttribute('data-value', element.id);
+                  artistList.appendChild(option);
+                  //console.log(element);
+                }
               });
             })
             .catch(error => console.error('Erro:', error));
+
         });
+
+        const submitButton = document.getElementById('submit-play');
+        submitButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          const selectedOptionText = document.getElementById('artist').value;
+          const selectedOption = [...document.getElementById('artistList').options].find(option => option.textContent === selectedOptionText);
+          const error = document.querySelector(".error");
+
+          if (selectedOption) {
+            error.innerHTML = "";  
+            error.className = "error";  
+            const id = selectedOption.getAttribute('data-value');
+            fetch('../game.html')
+              .then(response => response.text())
+              .then(data => {
+                bodyPage.innerHTML = data;
+                const lyrics = document.querySelector('.lyrics');
+                const album = document.querySelector('.album');
+                const image = document.querySelector('.artist-img');
+                // image.setAttribute('src',response.getAttribute('data-value'));
+                let apiUrl = `https://api.spotify.com/v1/artists/${id}/`;
+
+                fetch(apiUrl, {
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                  }
+                })
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(data);
+                  })
+                  .catch(error => console.error('Erro:', error));
+              })
+          } else {
+            error.innerHTML = "Invalid artist";
+          }
+        });
+
+
       })
       .catch(error => console.error('Error:', error));
   });
+
+
 
 
 

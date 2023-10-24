@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   .then(response => response.json())
                   .then(data => {
                     console.log(data);
+                    image.setAttribute('src',data.images[0].url);
                   })
                   .catch(error => console.error('Erro:', error));
               })

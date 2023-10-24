@@ -17,10 +17,12 @@ options.forEach(item => {
   });
 });
 
-
-const artistName = 'justin bieber';
-const apiKey = '8d7ad2534c36083b8838852b8facb582.'; 
-const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&apikey=${apiKey}`;
+ 
+const apiKey = '8d7ad2534c36083b8838852b8facb582'; 
+//const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&apikey=${apiKey}`;
+ 
+const artistName = 'justin bieber'; 
+const apiUrl = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&apikey=${apiKey}`;
 
 fetch(apiUrl)
   .then(response => response.json())
@@ -28,3 +30,4 @@ fetch(apiUrl)
     console.log(data);
   })
   .catch(error => console.error('Error:', error));
+

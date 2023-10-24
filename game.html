@@ -1,31 +1,89 @@
-<section class="s-game">
-
-    <div class="container">
-        <div class="game-info">
-            <div class="wrapper-question">
-                <img src="./img/icon-interrogation.png" alt="question mark">
-                <span class="question-count">05/08</span>
-            </div>
-            <span class="points">150 points</span>
-            <div class="wrapper-timer">
-                <span>04:30</span>
-                <img src="./img/icon-clock.png" alt="timer icon">
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.cdnfonts.com/css/cabinet-grotesk?styles=134960,134961,134957,134958,134959,134955,134956,134954"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="./css/main.css">
+    <title>GuessTheVerse</title>
+    
+    <script src="./js/game.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><img src="./img/logo-header.png" alt="Logo"></div>
+            <div class="how-to"><img src="./img/why-label.png" alt="Why play"></div>
         </div>
-        <div class="thin-line"></div>
-        <div class="game-content">
-            <div class="artist-info">
-                <img src="" class="artist-img">
+    </header>
+    <section class="s-game">
+
+        <div class="container">
+            <div class="game-info">
+                <div class="wrapper-question">
+                    <img src="./img/icon-interrogation.png" alt="question mark">
+                    <span class="question-count">05/08</span>
+                </div>
+                <span class="points">150 points</span>
+                <div class="wrapper-timer">
+                    <span>04:30</span>
+                    <img src="./img/icon-clock.png" alt="timer icon">
+                </div>
             </div>
-            <div class="questions">
-                <h3 class="lyrics">If you liked then you should've put a ring on it</h3>
-                <div class="answers">
-                    <button class="option a">A) Waka Waka</button>
-                    <button class="option b">B) Umbrella</button>
-                    <button class="option c">C) Single Ladies</button>
-                    <button class="option d">D) I'm that girl</button>
+            <div class="thin-line"></div>
+            <div class="game-content">
+                <div class="artist-info">
+                    <img src="" class="artist-img">
+                </div>
+                <div class="questions">
+                    <h3 class="lyrics">If you liked then you should've put a ring on it</h3>
+                    <div class="answers">
+                        <button class="option a">A) Waka Waka</button>
+                        <button class="option b">B) Umbrella</button>
+                        <button class="option c">C) Single Ladies</button>
+                        <button class="option d">D) I'm that girl</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+    
+    <div class="modal-why-play">
+        <div class="overlay"></div>
+        <div class="content">
+            <a href="" class="icon-close">
+                <i class="fa-regular fa-circle-xmark fa-bounce fa-2xl" 
+                style="color: black;" id="icone"></i>
+            </a>
+            <h3>Why play?</h3>
+            <ul>
+                <li><i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Challenge Your Musical Knowledge:</span>
+                    Test how well you
+                    know your favorite songs and discover new ones
+                    along the way.
+                </li>
+                <li><i class="fa-solid fa-wand-magic-sparkles"></i><span>Fun for All Ages:</span> Whether you're a
+                    seasoned music
+                    buff or just love a catchy tune, this game is for
+                    you!</li>
+                <li><i class="fa-solid fa-wand-magic-sparkles"></i><span>Compete with Friends: </span>Share your scores,
+                    challenge
+                    your friends, and see who reigns as the ultimate
+                    lyric guru.</li>
+            </ul>
+        </div>
     </div>
-</section>
+</body>
+</html>

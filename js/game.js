@@ -51,7 +51,7 @@ function randomNumber(max) {
     const number = Math.floor(Math.random() * max);
     return number;
 }
- 
+
 let apiUrl = `https://api.spotify.com/v1/artists/${id}/top-tracks?market=US`;
 
 fetch(apiUrl, {
@@ -63,7 +63,28 @@ fetch(apiUrl, {
     .then(data => {
         const i = randomNumber(10);
         const nameSong = data.tracks[i].name.replace(/\([^)]*\)/g, '').trim();
+        const numbers = [];
+        numbers.push(i);
         searchLyric(nameSong, artistName);
+        const positionAnswer = randomNumber(4);
+        options[positionAnswer].innerHTML += nameSong;
+        options[positionAnswer].setAttribute('isFilled', true);     
+        const unfilledPosition = []; 
+        for (let position = 0; position < options.length; position++) {
+            if (!options[position].getAttribute('isFilled')) {
+                unfilledPosition.push(position);
+            }
+        }
+        let j = 0;
+        while (numbers.length < 3) {
+            const randomNumber = Math.floor(Math.random() * 10);
+            if (!numbers.includes(randomNumber)) {
+                const randomSong = data.tracks[randomNumber].name.replace(/\([^)]*\)/g, '').trim();
+                options[unfilledPosition[j]].innerHTML += randomSong;
+                numbers.push(randomNumber);
+                j++;
+            }
+        }
     })
     .catch(error => console.error('Erro:', error));
 
@@ -84,4 +105,13 @@ function searchLyric(nameSong, artistName) {
                 })
         })
         .catch(error => console.error('Error:', error));
+}
+
+function fillOptions() {
+
+    for (let option of options) {
+        if (option.getAttribute('isFilled') !== true) {
+
+        }
+    }
 }

@@ -64,13 +64,16 @@ submitButton.addEventListener('click', (e) => {
     const selectedOption = [...document.getElementById('artistList').options].find(option => option.textContent === selectedOptionText);
     const error = document.querySelector(".error");
 
+    console.log(selectedOption.getAttribute('data-name'));
     if (selectedOption) {
+        console.log(selectedOption.getAttribute('data-name'));
         error.innerHTML = "";
         error.className = "error";
         const id = selectedOption.getAttribute('data-url');
-        const nameArtist = selectedOption.getAttribute('data-name');
-        const dataToSend = { imageUrl: id , nameArtist: nameArtist};
-        const queryString = `?imageUrl=${dataToSend.imageUrl}?nameArtist=${dataToSend.nameArtist}`;
+        const nameA = selectedOption.getAttribute('data-name');
+        const dataToSend = { imageUrl: id, nameArtist: nameA };
+        const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}`;
+
         window.location.href = `game.html${queryString}`;
     } else {
         error.innerHTML = "Invalid artist";
@@ -79,27 +82,27 @@ submitButton.addEventListener('click', (e) => {
 
 var icone = document.getElementById('icone');
 
-  icone.addEventListener('mouseover', function () {
+icone.addEventListener('mouseover', function () {
     icone.classList.remove('fa-regular');
     icone.classList.add('fa-solid');
-  });
+});
 
-  icone.addEventListener('mouseout', function () {
+icone.addEventListener('mouseout', function () {
     icone.classList.remove('fa-solid');
     icone.classList.add('fa-regular');
-  });
+});
 
 const btnHow = document.querySelector('.how-to');
 const close = document.querySelector('.icon-close');
 const overlay = document.querySelector('.overlay');
 
 function openModal() {
-  document.documentElement.classList.toggle('modal-opened');
+    document.documentElement.classList.toggle('modal-opened');
 }
 
 btnHow.addEventListener('click', openModal);
 overlay.addEventListener('click', openModal);
 close.addEventListener('click', (e) => {
-  e.preventDefault();
-  openModal();
+    e.preventDefault();
+    openModal();
 });

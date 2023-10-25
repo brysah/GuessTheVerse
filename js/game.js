@@ -7,34 +7,10 @@ const lyrics = document.querySelector('.lyrics');
 const album = document.querySelector('.album');
 const image = document.querySelector('.artist-img');
 const options = document.querySelectorAll('.option');
-
+const body = document.querySelector('body');
+body.style.minHeight = 'auto';
 image.setAttribute('src', imageUrl);
 
-var icone = document.getElementById('icone');
-
-icone.addEventListener('mouseover', function () {
-    icone.classList.remove('fa-regular');
-    icone.classList.add('fa-solid');
-});
-
-icone.addEventListener('mouseout', function () {
-    icone.classList.remove('fa-solid');
-    icone.classList.add('fa-regular');
-});
-const btnHow = document.querySelector('.how-to');
-const close = document.querySelector('.icon-close');
-const overlay = document.querySelector('.overlay');
-
-function openModal() {
-    document.documentElement.classList.toggle('modal-opened');
-}
-
-btnHow.addEventListener('click', openModal);
-overlay.addEventListener('click', openModal);
-close.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal();
-});
 
 options.forEach(item => {
     item.addEventListener('click', (e) => {

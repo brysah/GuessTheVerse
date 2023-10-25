@@ -49,6 +49,7 @@ searchArtists.addEventListener('input', () => {
                     option.textContent = element.name;
                     option.setAttribute('data-url', element.images[0].url);
                     option.setAttribute('data-name', element.name);
+                    option.setAttribute('data-id', element.id);
                     artistList.appendChild(option);
                 }
             });
@@ -69,10 +70,11 @@ submitButton.addEventListener('click', (e) => {
         console.log(selectedOption.getAttribute('data-name'));
         error.innerHTML = "";
         error.className = "error";
-        const id = selectedOption.getAttribute('data-url');
+        const url = selectedOption.getAttribute('data-url');
+        const id = selectedOption.getAttribute('data-id');
         const nameA = selectedOption.getAttribute('data-name');
-        const dataToSend = { imageUrl: id, nameArtist: nameA };
-        const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}`;
+        const dataToSend = { imageUrl: url, nameArtist: nameA , id: id, token:token};
+        const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}&id=${dataToSend.id}&token=${dataToSend.token}`;
 
         window.location.href = `game.html${queryString}`;
     } else {

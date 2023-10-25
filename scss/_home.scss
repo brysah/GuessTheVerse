@@ -98,6 +98,7 @@
 
 .s-game {
     margin-top: 2rem;
+
     .container {
         background-color: white;
         width: 100%;
@@ -164,7 +165,7 @@
                     color: #151515;
                     font-size: 2.4rem;
                     font-weight: 800;
-                    
+                    text-align: center;
                 }
 
                 .answers {
@@ -176,6 +177,26 @@
                     margin-top: 3rem;
                 }
             }
+
+            .next-question {
+                position: relative;
+                align-self: center;
+                cursor: pointer;
+                opacity: 0;
+                pointer-events: none;
+                transition: all .3s;
+                left: -10px;
+
+                &:active {
+                    opacity: 1;
+                    pointer-events: all;
+                    left: 0;
+                }
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+
         }
     }
 

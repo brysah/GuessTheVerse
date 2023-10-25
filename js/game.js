@@ -106,12 +106,3 @@ function searchLyric(nameSong, artistName) {
         })
         .catch(error => console.error('Error:', error));
 }
-
-function fillOptions() {
-
-    for (let option of options) {
-        if (option.getAttribute('isFilled') !== true) {
-
-        }
-    }
-}

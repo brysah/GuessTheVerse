@@ -67,8 +67,10 @@ fetch(apiUrl, {
         numbers.push(i);
         searchLyric(nameSong, artistName);
         const positionAnswer = randomNumber(4);
+        console.log(positionAnswer);
         options[positionAnswer].innerHTML += nameSong;
-        options[positionAnswer].setAttribute('isFilled', true);     
+        options[positionAnswer].setAttribute('isFilled', true);    
+        console.log( options[positionAnswer]); 
         const unfilledPosition = []; 
         for (let position = 0; position < options.length; position++) {
             if (!options[position].getAttribute('isFilled')) {
@@ -76,7 +78,8 @@ fetch(apiUrl, {
             }
         }
         let j = 0;
-        while (numbers.length < 3) {
+        console.log( unfilledPosition);
+        while (numbers.length < 4) {
             const randomNumber = Math.floor(Math.random() * 10);
             if (!numbers.includes(randomNumber)) {
                 const randomSong = data.tracks[randomNumber].name.replace(/\([^)]*\)/g, '').trim();

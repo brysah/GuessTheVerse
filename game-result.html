@@ -14,33 +14,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <title>GuessTheVerse</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />    
     <link rel="stylesheet" href="./css/main.css">
+    <title>GuessTheVerse</title>
     
-    <script src="./js/game-setting.js" defer></script>
+    <script src="./js/game-result.js" defer></script>
 </head>
-<body>
+<body> 
     <header>
         <div class="container">
             <div class="logo"><img src="./img/logo-header.png" alt="Logo"></div>
-            <div class="how-to"><img src="./img/why-label.png" alt="Why play"></div>
+            <img src="./img/guess-label.png" alt="Guess The Verse">
         </div>
     </header>
-    <section class="s-setting">
+    <main>
+        
+    <section class="s-result">
         <div class="container">
-            <div class="title"><img src="./img/choose.png" alt="Choose your favorite artist">
-            </div>
-            <form>
-                <label for="artist" class="search-label">
-                    <input type="search" name="artist" placeholder="Search an artist"  required id="artist" list="artistList">
-                    <datalist id="artistList"  required></datalist>
-                    <span class="error"></span>
-                 </label>
-                 <button class="btn-submit" type="submit" id="submit-play">Play Now</button>
-            </form>
-        </div>
+            <div class="title">
+                <h1 class="green" id="headline">where the music</h1>
+                <h1 id="message">magic happens!</h1>
+            </div> 
+            <button class="btn-play" id="play-again">Play Again</button>
+        </div> 
     </section>
-     
+    </main> 
 </body>
 </html>

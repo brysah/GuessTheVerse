@@ -12,8 +12,13 @@ const options = document.querySelectorAll('.option');
 const nextQuestion = document.querySelector('.next-question');
 const p = document.querySelector('.empty-option');
 let correctAnswer = undefined;
+
+const questionCount = document.querySelector('.question-count');
+const points = document.querySelector('.points');
 image.setAttribute('src', imageUrl);
 
+questionCount.innerHTML = `0${localStorage.getItem('question')}/05`;
+points.innerHTML = `${localStorage.getItem('points')} points`;
 
 options.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -42,7 +47,14 @@ nextQuestion.addEventListener('click', () => {
     } else {
         answer = answer.slice(3, answer.length);
         checkAnswer(answer);
-        setTimeout(refresh, 3000);
+        let question = parseInt(localStorage.getItem('question')) + 1;
+        if (question <= 5) {
+            localStorage.setItem('question', question);
+            setTimeout(refresh, 3000);
+        }else{
+            localStorage.setItem('question', 0);
+            window.location.href = 'game-result.html';
+        }
     }
 });
 
@@ -117,30 +129,14 @@ function searchLyric(nameSong, artistName) {
 function checkAnswer(selectedAnswer) {
     console.log('correct:', correctAnswer);
     console.log('selected:', selectedAnswer);
-    if (correctAnswer == selectedAnswer) {
-        options.forEach(option => {
-            if (option.classList.contains('selected')) {
-                option.classList.add('correct');
-                return;
-            }
-        });
-    } else {
-        options.forEach(option => {
-            if (option.classList.contains('selected')) {
-                option.classList.add('wrong');
-            }
-            if (option.classList.innerHTML == correctAnswer) {
-                option.classList.add('correct');
-            }
-        });
-    }
-
     options.forEach(option => {
         let answer = option.innerHTML.slice(3, option.length);
         if (option.classList.contains('selected')) {
             if (correctAnswer == answer) {
                 option.classList.add('correct');
-            }else{
+                let points = parseInt(localStorage.getItem('points')) + 25;
+                localStorage.setItem('points', points);
+            } else {
                 option.classList.add('wrong');
             }
 

@@ -75,7 +75,8 @@ submitButton.addEventListener('click', (e) => {
         const nameA = selectedOption.getAttribute('data-name');
         const dataToSend = { imageUrl: url, nameArtist: nameA , id: id, token:token};
         const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}&id=${dataToSend.id}&token=${dataToSend.token}`;
-
+        localStorage.setItem('points',0);
+        localStorage.setItem('question',1);
         window.location.href = `game.html${queryString}`;
     } else { 
         error.innerHTML = "Invalid artist";

@@ -109,8 +109,7 @@
         .game-info {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
+            justify-content: space-between; 
 
             span {
 
@@ -122,12 +121,7 @@
             .wrapper-question {
                 display: flex;
                 align-items: center;
-            }
-
-            .wrapper-timer {
-                display: flex;
-                align-items: center;
-            }
+            } 
 
             .points {
                 text-align: center;

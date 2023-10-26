@@ -18,8 +18,8 @@
 
     <title>GuessTheVerse</title>
     <link rel="stylesheet" href="./css/main.css">
-    
-    <script src="./js/script.js" defer></script>
+
+    <script src="./js/script.js" defer type="module"></script>
 </head>
 
 <body>
@@ -30,28 +30,26 @@
         </div>
     </header>
     <main>
-        
-    <section class="s-welcome">
-        <div class="container">
-            <div class="title">
-                <h1 class="yellow">where the music</h1>
-                <h1>magic happens!</h1>
+
+        <section class="s-welcome">
+            <div class="container">
+                <div class="title">
+                    <h1 class="yellow">where the music</h1>
+                    <h1>magic happens!</h1>
+                </div>
+                <p class="description">
+                    We'll drop you some lyric snippets from hit songs of your fav artist, and you've gotta guess the
+                    song title. The closer you
+                    get, the more points you rack up!
+                </p>
+                <button class="btn-play">Let's Start</button>
             </div>
-            <p class="description">
-                We'll drop you some lyric snippets from hit songs, and you've gotta guess the song title. The closer you
-                get, the more points you rack up!
-            </p>
-            <button class="btn-play">Let's Start</button>
-        </div> 
-    </section>
+        </section>
     </main>
     <div class="modal-why-play">
         <div class="overlay"></div>
         <div class="content">
-            <a href="" class="icon-close">
-                <i class="fa-regular fa-circle-xmark fa-bounce fa-2xl" 
-                style="color: black;" id="icone"></i>
-            </a>
+            <i class="fa-regular fa-circle-xmark fa-bounce fa-2xl" style="color: black;" id="icon"></i>
             <h3>Why play?</h3>
             <ul>
                 <li><i class="fa-solid fa-wand-magic-sparkles"></i>

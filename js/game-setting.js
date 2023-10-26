@@ -64,8 +64,8 @@ submitButton.addEventListener('click', (e) => {
     const selectedOptionText = document.getElementById('artist').value;
     const selectedOption = [...document.getElementById('artistList').options].find(option => option.textContent === selectedOptionText);
     const error = document.querySelector(".error");
-
-    console.log(selectedOption.getAttribute('data-name'));
+   
+     
     if (selectedOption) {
         console.log(selectedOption.getAttribute('data-name'));
         error.innerHTML = "";
@@ -77,7 +77,7 @@ submitButton.addEventListener('click', (e) => {
         const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}&id=${dataToSend.id}&token=${dataToSend.token}`;
 
         window.location.href = `game.html${queryString}`;
-    } else {
+    } else { 
         error.innerHTML = "Invalid artist";
     }
 });

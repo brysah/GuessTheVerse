@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+body.style.minHeight = 'auto';
 const urlParams = new URLSearchParams(window.location.search);
 const imageUrl = urlParams.get('imageUrl');
 const id = urlParams.get('id');
@@ -7,13 +9,15 @@ const lyrics = document.querySelector('.lyrics');
 const album = document.querySelector('.album');
 const image = document.querySelector('.artist-img');
 const options = document.querySelectorAll('.option');
-const body = document.querySelector('body');
-body.style.minHeight = 'auto';
+const nextQuestion = document.querySelector('.next-question');
+const p = document.querySelector('.empty-option');
+let correctAnswer = undefined;
 image.setAttribute('src', imageUrl);
 
 
 options.forEach(item => {
     item.addEventListener('click', (e) => {
+        if (!nextQuestion.classList.contains('active')) nextQuestion.classList.add('active');
         options.forEach(option => {
             if (option !== e.target) {
                 option.classList.remove('selected');
@@ -22,6 +26,29 @@ options.forEach(item => {
         e.target.classList.toggle('selected');
     });
 });
+
+nextQuestion.addEventListener('click', () => {
+    let answer = 0;
+    options.forEach(option => {
+        if (option.classList.contains('selected')) {
+            answer = option.textContent;
+            console.log(answer);
+            return;
+        }
+    });
+
+    if (answer === 0) {
+        p.innerHTML = 'Choose an option';
+    } else {
+        answer = answer.slice(3, answer.length);
+        checkAnswer(answer);
+        setTimeout(refresh, 3000);
+    }
+});
+
+function refresh() {
+    location.reload();
+}
 
 function randomNumber(max) {
     const number = Math.floor(Math.random() * max);
@@ -45,16 +72,17 @@ fetch(apiUrl, {
         const positionAnswer = randomNumber(4);
         console.log(positionAnswer);
         options[positionAnswer].innerHTML += nameSong;
-        options[positionAnswer].setAttribute('isFilled', true);    
-        console.log( options[positionAnswer]); 
-        const unfilledPosition = []; 
+        options[positionAnswer].setAttribute('isFilled', true);
+        console.log(options[positionAnswer]);
+        correctAnswer = nameSong;
+        const unfilledPosition = [];
         for (let position = 0; position < options.length; position++) {
             if (!options[position].getAttribute('isFilled')) {
                 unfilledPosition.push(position);
             }
         }
         let j = 0;
-        console.log( unfilledPosition);
+        console.log(unfilledPosition);
         while (numbers.length < 4) {
             const randomNumber = Math.floor(Math.random() * 10);
             if (!numbers.includes(randomNumber)) {
@@ -84,4 +112,43 @@ function searchLyric(nameSong, artistName) {
                 })
         })
         .catch(error => console.error('Error:', error));
+}
+
+function checkAnswer(selectedAnswer) {
+    console.log('correct:', correctAnswer);
+    console.log('selected:', selectedAnswer);
+    if (correctAnswer == selectedAnswer) {
+        options.forEach(option => {
+            if (option.classList.contains('selected')) {
+                option.classList.add('correct');
+                return;
+            }
+        });
+    } else {
+        options.forEach(option => {
+            if (option.classList.contains('selected')) {
+                option.classList.add('wrong');
+            }
+            if (option.classList.innerHTML == correctAnswer) {
+                option.classList.add('correct');
+            }
+        });
+    }
+
+    options.forEach(option => {
+        let answer = option.innerHTML.slice(3, option.length);
+        if (option.classList.contains('selected')) {
+            if (correctAnswer == answer) {
+                option.classList.add('correct');
+            }else{
+                option.classList.add('wrong');
+            }
+
+        }
+        else {
+            if (correctAnswer == answer) {
+                option.classList.add('correct');
+            }
+        }
+    });
 }

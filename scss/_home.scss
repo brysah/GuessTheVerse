@@ -187,12 +187,19 @@
                 transition: all .3s;
                 left: -10px;
 
-                &:active {
+                p {
+                    font-size: 1.4rem;
+                    margin-top: 1rem;
+                    color: red;
+                }
+
+                &.active {
                     opacity: 1;
                     pointer-events: all;
                     left: 0;
                 }
-                &:hover{
+
+                &:hover {
                     transform: scale(1.1);
                 }
             }

@@ -1,3 +1,7 @@
+import Artist from "./artist.js";
+
+let i =  localStorage.getItem('artist') ;
+console.log(i);
 const body = document.querySelector('body');
 body.style.minHeight = 'auto';
 const urlParams = new URLSearchParams(window.location.search);
@@ -12,6 +16,10 @@ const options = document.querySelectorAll('.option');
 const nextQuestion = document.querySelector('.next-question');
 const p = document.querySelector('.empty-option');
 let correctAnswer = undefined;
+
+const artist = urlParams.get('artist');
+console.log(artist);
+
 
 const questionCount = document.querySelector('.question-count');
 const points = document.querySelector('.points');

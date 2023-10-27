@@ -1,13 +1,14 @@
-import Api from './api.js';
 import Artist from './artist.js';
 
 const showArtist = document.getElementById('artist');
-const artistList = document.getElementById('artistListS');
+const artistList = document.getElementById('artistList');
+const submitButton = document.getElementById('submit-play');
+const error = document.querySelector(".error");
 
-const api = Api();
-let token = await api.getToken();
 const artist = Artist({
-    token
+    name:null,
+    id:null,
+    imageUrl:null,
 });
 
 function dataCleaner(data) {
@@ -18,10 +19,13 @@ function dataCleaner(data) {
 
 function createOption(element) {
     let option = document.createElement('option');
-    option.textContent = element.name;
-    option.setAttribute('data-url', element.images[0].url);
-    option.setAttribute('data-name', element.name);
-    option.setAttribute('data-id', element.id);
+    option.textContent = element.name;   
+    let artistOption = Artist({
+        name: element.name,
+        id: element.id,
+        imageUrl: element.images[1].url
+    });
+    option.setAttribute('info',JSON.stringify(artistOption));
     artistList.appendChild(option);
 }
 
@@ -32,30 +36,23 @@ showArtist.addEventListener('input', async () => {
         artistArray.forEach(element => {
             createOption(element);
         });
+        
     }
 
 });
 
-const submitButton = document.getElementById('submit-play');
 submitButton.addEventListener('click', (e) => {
     e.preventDefault();
-    const selectedOptionText = document.getElementById('artist').value;
-    const selectedOption = [...document.getElementById('artistList').options].find(option => option.textContent === selectedOptionText);
-    const error = document.querySelector(".error");
+    const selectedOptionText = showArtist.value;
+    const selectedOption = [...artistList.options].find(option => option.textContent === selectedOptionText);
 
-
-    if (selectedOption) {
-        console.log(selectedOption.getAttribute('data-name'));
-        error.innerHTML = "";
-        error.className = "error";
-        const url = selectedOption.getAttribute('data-url');
-        const id = selectedOption.getAttribute('data-id');
-        const nameA = selectedOption.getAttribute('data-name');
-        const dataToSend = { imageUrl: url, nameArtist: nameA, id: id, token: token };
-        const queryString = `?imageUrl=${dataToSend.imageUrl}&nameArtist=${dataToSend.nameArtist}&id=${dataToSend.id}&token=${dataToSend.token}`;
+    if (selectedOption) {        
+        error.innerHTML = "";   
+        console.log(selectedOption);
         localStorage.setItem('points', 0);
-        localStorage.setItem('question', 1);
-        window.location.href = `game.html${queryString}`;
+        localStorage.setItem('question', 1); 
+        localStorage.setItem('artist',selectedOption.getAttribute('info'));
+        window.location.href = `game.html`;
     } else {
         error.innerHTML = "Invalid artist";
     }

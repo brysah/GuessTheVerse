@@ -2,7 +2,7 @@ import Api from './api.js';
 import Artist from './artist.js';
 
 const showArtist = document.getElementById('artist');
-const artistList = document.getElementById('artistList');
+const artistList = document.getElementById('artistListS');
 
 const api = Api();
 let token = await api.getToken();

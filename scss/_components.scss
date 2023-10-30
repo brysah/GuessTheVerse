@@ -60,10 +60,10 @@
             background-image: url(../img/icon-check.svg);
             background-size: cover;
             position: absolute;
-            width: 1.5rem;
-            height: 1.5rem;
-            top: 1rem;
-            right: 1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            top: 0.5rem;
+            right: 0.5rem;
         }
     }
 
@@ -85,9 +85,7 @@
 
         &.selected {
             &:after {
-                width: 1.2rem;
-                height: 1.5rem;
-                background-image: url('../img/icon-x.svg');
+                display: none;
             }
         }
     }

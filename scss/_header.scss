@@ -29,5 +29,14 @@ header {
  
     }
     margin-bottom: 4rem;
+    @media (max-width: 1024px) {
+        .container{
+            .logo{
+                img{
+                    width: 70%;
+                }
+            }
+        }
+    }
 }
  

@@ -43,29 +43,35 @@
             margin-bottom: 4rem;
         }
     }
-    @media (max-width:768px){ 
+
+    @media (max-width:768px) {
         display: flex;
         flex-wrap: wrap;
         height: auto;
-        .container{
-            .btn-play{
+
+        .container {
+            .btn-play {
                 margin-bottom: 3rem;
             }
-            .title{
-                h1{
+
+            .title {
+                h1 {
                     font-size: 4.4rem;
                 }
             }
         }
     }
-    @media (max-width:480px){  
-        .container{
-            .description{
+
+    @media (max-width:480px) {
+        .container {
+            .description {
                 font-size: 1.6rem;
             }
-            .title{
+
+            .title {
                 margin-bottom: 2rem;
-                h1{
+
+                h1 {
                     font-size: 3.4rem;
                 }
             }
@@ -119,6 +125,29 @@
                 span {
                     color: red;
                     font-size: 1.6rem;
+                }
+            }
+        }
+    }
+
+    @media (max-width:480px) {
+        width: auto;
+        margin: 0 20px;
+        .container {
+            .title {
+                margin-bottom: 4rem;
+            }
+            form{
+                width: 100%;
+                align-items:stretch;
+                .btn-submit{
+                    align-self: center;
+                }
+                .search-label{
+                    input[type="search"]{
+                        max-width: 32rem;
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -354,7 +383,7 @@
     }
 }
 
-main{
+main {
     margin: 0 2rem;
 }
 

@@ -2,7 +2,8 @@ const headline = document.getElementById('headline');
 const message = document.getElementById('message');
 const score = parseInt(localStorage.getItem('points'));
 const playAgain = document.getElementById('play-again');
-
+const body = document.querySelector('body');
+body.style.minHeight = 'auto';   
 
 if (score >= 0 && score <= 50){
     headline.innerHTML = 'Nice try!';

@@ -302,8 +302,7 @@
 }
 
 .s-result {
-    .container {
-        height: 100%;
+    .container { 
 
         .title {
             h1 {
@@ -314,6 +313,15 @@
                     margin-bottom: 1.5rem;
                     text-shadow: 2px 2px 0px #000;
                     font-size: 4.4rem;
+                }
+            }
+        }
+    }
+    @media (max-width:425px) {
+        .container{
+            .title{
+                h1{
+                    font-size: 2.4rem !important;
                 }
             }
         }
@@ -426,5 +434,12 @@ main {
     .modal-why-play {
         opacity: 1;
         pointer-events: all;
+    }
+}
+
+.game-result{
+    .container{
+        justify-content: center;
+        margin-top: 2rem;
     }
 }

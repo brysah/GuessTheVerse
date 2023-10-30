@@ -43,6 +43,34 @@
             margin-bottom: 4rem;
         }
     }
+    @media (max-width:768px){ 
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        .container{
+            .btn-play{
+                margin-bottom: 3rem;
+            }
+            .title{
+                h1{
+                    font-size: 4.4rem;
+                }
+            }
+        }
+    }
+    @media (max-width:480px){  
+        .container{
+            .description{
+                font-size: 1.6rem;
+            }
+            .title{
+                margin-bottom: 2rem;
+                h1{
+                    font-size: 3.4rem;
+                }
+            }
+        }
+    }
 }
 
 .s-setting {
@@ -324,6 +352,10 @@
             height: 60%;
         }
     }
+}
+
+main{
+    margin: 0 2rem;
 }
 
 .modal-opened {

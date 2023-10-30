@@ -1,32 +1,27 @@
 import Artist from "./artist.js";
+import Song from "./song.js";
+     
+const artist = Artist(JSON.parse(localStorage.getItem('artist')));  
 
-let i =  localStorage.getItem('artist') ;
-console.log(i);
 const body = document.querySelector('body');
-body.style.minHeight = 'auto';
-const urlParams = new URLSearchParams(window.location.search);
-const imageUrl = urlParams.get('imageUrl');
-const id = urlParams.get('id');
-const token = urlParams.get('token');
-const artistName = urlParams.get('nameArtist');
+body.style.minHeight = 'auto';     
+const questionCount = document.querySelector('.question-count');
+const points = document.querySelector('.points');
 const lyrics = document.querySelector('.lyrics');
-const album = document.querySelector('.album');
 const image = document.querySelector('.artist-img');
 const options = document.querySelectorAll('.option');
 const nextQuestion = document.querySelector('.next-question');
 const p = document.querySelector('.empty-option');
-let correctAnswer = undefined;
-
-const artist = urlParams.get('artist');
-console.log(artist);
-
-
-const questionCount = document.querySelector('.question-count');
-const points = document.querySelector('.points');
-image.setAttribute('src', imageUrl);
-
+const song = Song({
+    options,
+    lyrics
+});
+image.setAttribute('src', artist.imageUrl);
+await song.generate(artist.id,artist.name);  
+let ac =  localStorage.getItem('prevSongs');
+localStorage.setItem('prevSongs',`${ac}|${song.id}`); 
 questionCount.innerHTML = `0${localStorage.getItem('question')}/05`;
-points.innerHTML = `${localStorage.getItem('points')} points`;
+points.innerHTML = `${localStorage.getItem('points')} points`;  
 
 options.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -61,6 +56,7 @@ nextQuestion.addEventListener('click', () => {
             setTimeout(refresh, 3000);
         }else{
             localStorage.setItem('question', 0);
+            localStorage.setItem('prevSongs','');
             window.location.href = 'game-result.html';
         }
     }
@@ -70,77 +66,11 @@ function refresh() {
     location.reload();
 }
 
-function randomNumber(max) {
-    const number = Math.floor(Math.random() * max);
-    return number;
-}
-
-let apiUrl = `https://api.spotify.com/v1/artists/${id}/top-tracks?market=US`;
-
-fetch(apiUrl, {
-    headers: {
-        'Authorization': `Bearer ${token}`
-    }
-})
-    .then(response => response.json())
-    .then(data => {
-        const i = randomNumber(10);
-        const nameSong = data.tracks[i].name.replace(/\([^)]*\)/g, '').trim();
-        const numbers = [];
-        numbers.push(i);
-        searchLyric(nameSong, artistName);
-        const positionAnswer = randomNumber(4);
-        console.log(positionAnswer);
-        options[positionAnswer].innerHTML += nameSong;
-        options[positionAnswer].setAttribute('isFilled', true);
-        console.log(options[positionAnswer]);
-        correctAnswer = nameSong;
-        const unfilledPosition = [];
-        for (let position = 0; position < options.length; position++) {
-            if (!options[position].getAttribute('isFilled')) {
-                unfilledPosition.push(position);
-            }
-        }
-        let j = 0;
-        console.log(unfilledPosition);
-        while (numbers.length < 4) {
-            const randomNumber = Math.floor(Math.random() * 10);
-            if (!numbers.includes(randomNumber)) {
-                const randomSong = data.tracks[randomNumber].name.replace(/\([^)]*\)/g, '').trim();
-                options[unfilledPosition[j]].innerHTML += randomSong;
-                numbers.push(randomNumber);
-                j++;
-            }
-        }
-    })
-    .catch(error => console.error('Erro:', error));
-
-function searchLyric(nameSong, artistName) {
-    const apiKey = '8d7ad2534c36083b8838852b8facb582';
-    const apiUrl = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${apiKey}`;
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const id = data.message.body.track_list[0].track.track_id;
-            const newApi = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=${apiKey}`;
-            fetch(newApi)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    const lyric = data.message.body.snippet.snippet_body;
-                    lyrics.textContent = lyric;
-                })
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function checkAnswer(selectedAnswer) {
-    console.log('correct:', correctAnswer);
-    console.log('selected:', selectedAnswer);
+function checkAnswer( ) { 
     options.forEach(option => {
         let answer = option.innerHTML.slice(3, option.length);
         if (option.classList.contains('selected')) {
-            if (correctAnswer == answer) {
+            if (song.correctAnswer == answer) {
                 option.classList.add('correct');
                 let points = parseInt(localStorage.getItem('points')) + 25;
                 localStorage.setItem('points', points);
@@ -150,9 +80,10 @@ function checkAnswer(selectedAnswer) {
 
         }
         else {
-            if (correctAnswer == answer) {
+            if (song.correctAnswer == answer) {
                 option.classList.add('correct');
             }
         }
     });
 }
+ 

@@ -52,6 +52,7 @@ submitButton.addEventListener('click', (e) => {
         localStorage.setItem('points', 0);
         localStorage.setItem('question', 1); 
         localStorage.setItem('artist',selectedOption.getAttribute('info'));
+        localStorage.setItem('prevSongs','');
         window.location.href = `game.html`;
     } else {
         error.innerHTML = "Invalid artist";

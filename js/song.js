@@ -1,5 +1,4 @@
-import Api from './api.js';
-import config from './config.js';
+import Api from './api.js'; 
 export default function Song({
     options,
     lyrics

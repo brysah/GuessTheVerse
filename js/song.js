@@ -8,9 +8,8 @@ export default function Song({
     const api = Api(); 
 
     async function searchLyric(nameSong, artistName) {
-        try {
-            const apiKey = config.apiKeyMusicx;
-            const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${apiKey}&format=jsonp`;
+        try { 
+            const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=8d7ad2534c36083b8838852b8facb582&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${apiUrl}&callback=handleResponse`;
@@ -31,7 +30,7 @@ export default function Song({
                 }
                 cont++;
             }
-            const newApi = `https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=${apiKey}&format=jsonp`;
+            const newApi = `https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=8d7ad2534c36083b8838852b8facb582&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${newApi}&callback=handleLyricResponse`;

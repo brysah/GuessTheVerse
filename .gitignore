@@ -1,0 +1,13 @@
+# Arquivos de compilação
+/build/
+
+# Dependências
+/node_modules/
+
+# Arquivos de configuração
+/.env
+/js/config.js
+
+# Cache e arquivos temporários
+/.cache/
+/.temp/

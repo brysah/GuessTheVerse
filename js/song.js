@@ -1,4 +1,5 @@
 import Api from './api.js';
+import config from './js/config.js';
 export default function Song({
     options,
     lyrics
@@ -9,7 +10,7 @@ export default function Song({
 
     async function searchLyric(nameSong, artistName) {
         try { 
-            const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${API_KEY_MUSICX}&format=jsonp`;
+            const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${config.apiKeyMusicx}&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${apiUrl}&callback=handleResponse`;
@@ -29,7 +30,7 @@ export default function Song({
                 }
                 cont++;
             }
-            const newApi = `https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=${API_KEY_MUSICX}&format=jsonp`;
+            const newApi = `https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=${config.apiKeyMusicx}&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${newApi}&callback=handleLyricResponse`;

@@ -23,7 +23,7 @@ function createOption(element) {
     let artistOption = Artist({
         name: element.name,
         id: element.id,
-        imageUrl: element.images[1].url
+        imageUrl: element.images[1].url 
     });
     option.setAttribute('info',JSON.stringify(artistOption));
     artistList.appendChild(option);

@@ -1,5 +1,8 @@
 import Api from './api.js';
-export default function Artist({ name, id, imageUrl }) {
+export default function Artist({
+    name,
+    id,
+    imageUrl  }) {
 
     const api = Api();
     async function search(name) {
@@ -25,6 +28,6 @@ export default function Artist({ name, id, imageUrl }) {
         search,
         name,
         id,
-        imageUrl
+        imageUrl 
     }
 }

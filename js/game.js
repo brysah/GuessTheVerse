@@ -1,10 +1,10 @@
 import Artist from "./artist.js";
 import Song from "./song.js";
-     
-const artist = Artist(JSON.parse(localStorage.getItem('artist')));  
+
+const artist = Artist(JSON.parse(localStorage.getItem('artist')));
 
 const body = document.querySelector('body');
-body.style.minHeight = 'auto';     
+body.style.minHeight = 'auto';
 const questionCount = document.querySelector('.question-count');
 const points = document.querySelector('.points');
 const lyrics = document.querySelector('.lyrics');
@@ -16,12 +16,16 @@ const song = Song({
     options,
     lyrics
 });
-image.setAttribute('src', artist.imageUrl);
-await song.generate(artist.id,artist.name);  
-let ac =  localStorage.getItem('prevSongs');
-localStorage.setItem('prevSongs',`${ac}|${song.id}`); 
+
+
+image.setAttribute('src', artist.imageUrl);  
+ 
+
+await song.generate(artist.id, artist.name);
+let ac = localStorage.getItem('prevSongs');
+localStorage.setItem('prevSongs', `${ac}|${song.id}`);
 questionCount.innerHTML = `0${localStorage.getItem('question')}/05`;
-points.innerHTML = `${localStorage.getItem('points')} points`;  
+points.innerHTML = `${localStorage.getItem('points')} points`;
 
 options.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -54,9 +58,10 @@ nextQuestion.addEventListener('click', () => {
         if (question <= 5) {
             localStorage.setItem('question', question);
             setTimeout(refresh, 3000);
-        }else{
+        } else {
+            setTimeout(refresh, 3000);
             localStorage.setItem('question', 0);
-            localStorage.setItem('prevSongs','');
+            localStorage.setItem('prevSongs', '');
             window.location.href = 'game-result.html';
         }
     }
@@ -66,7 +71,7 @@ function refresh() {
     location.reload();
 }
 
-function checkAnswer( ) { 
+function checkAnswer() {
     options.forEach(option => {
         let answer = option.innerHTML.slice(3, option.length);
         if (option.classList.contains('selected')) {
@@ -86,4 +91,3 @@ function checkAnswer( ) {
         }
     });
 }
- 

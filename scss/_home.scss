@@ -287,13 +287,20 @@
             }
         }
     }
-    @media (max-width:375px){
+    @media (max-width:425px){
         .container{
             .game-content{
                 .artist-info{
                     height: 23rem;
                     .artist-img{
                         height: 22.3rem;
+                    }
+                }
+                .questions{
+                    .answers{
+                        .option{
+                            font-size: 1.6rem;
+                        }
                     }
                 }
             }

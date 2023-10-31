@@ -1,4 +1,5 @@
 # GuessTheVerse - A Fun and Engaging Quiz Game! 
+![GuessTheVerse Logo](https://github.com/brysah/GuessTheVerse/blob/9e0413f2559aa629725584aaaa4184f6fddfa089/img/banner.jpg)
 
 ## Overview
 

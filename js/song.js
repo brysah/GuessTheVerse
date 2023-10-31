@@ -22,8 +22,7 @@ export default function Song({
     window.handleResponse = async function (data) {
         try {
             let id;
-            let cont = 0;
-            const apiKey = config.apiKeyMusicx;
+            let cont = 0; 
             while (!id) {
                 if (data.message.body.track_list[cont].track.has_lyrics == true) {
                     id = data.message.body.track_list[cont].track.track_id;

@@ -10,7 +10,7 @@ export default function Song({
     async function searchLyric(nameSong, artistName) {
         try {
             const apiKey = '8d7ad2534c36083b8838852b8facb582';
-            const apiUrl = `http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${apiKey}&format=jsonp`;
+            const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_artist=${artistName}&q_track=${nameSong}&f_has_lyrics=true&apikey=${apiKey}&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${apiUrl}&callback=handleResponse`;
@@ -30,7 +30,7 @@ export default function Song({
                 }
                 cont++;
             }
-            const newApi = `http://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=8d7ad2534c36083b8838852b8facb582&format=jsonp`;
+            const newApi = `https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${id}&apikey=8d7ad2534c36083b8838852b8facb582&format=jsonp`;
 
             const script = document.createElement('script');
             script.src = `${newApi}&callback=handleLyricResponse`;

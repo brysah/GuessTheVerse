@@ -59,9 +59,9 @@ nextQuestion.addEventListener('click', () => {
             localStorage.setItem('question', question);
             setTimeout(refresh, 3000);
         } else {
-            setTimeout(refresh, 3000);
             localStorage.setItem('question', 0);
             localStorage.setItem('prevSongs', '');
+            setTimeout(refresh, 3000);
             window.location.href = 'game-result.html';
         }
     }
